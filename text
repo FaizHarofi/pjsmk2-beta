@@ -1,0 +1,6 @@
+Default users (dari UserSeeder, password password123):
+Email Role
+admin@smkn2pekanbaru.sch.id superadmin
+admin2@smkn2pekanbaru.sch.id admin
+editor@smkn2pekanbaru.sch.id editor
+Password semua: password123

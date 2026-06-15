@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('sliders', function (Blueprint $table) {
+            $table->id();
+            $table->string('judul', 255)->nullable();
+            $table->string('sub_judul', 500)->nullable();
+            $table->string('gambar', 500);
+            $table->string('link', 500)->nullable();
+            $table->string('tombol_text', 50)->nullable();
+            $table->integer('urutan')->default(0);
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('sliders');
+    }
+};
