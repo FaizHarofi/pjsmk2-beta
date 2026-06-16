@@ -483,7 +483,7 @@ chmod -R 775 storage bootstrap/cache
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) file (jika ada, atau tambahkan).
+MIT License — see [LICENSE](LICENSE).
 
 ---
 
