@@ -23,7 +23,7 @@
             <span>👁 {{ $artikel->views }} views</span>
         </div>
         @if($artikel->gambar)
-        <img src="{{ asset('storage/' . $artikel->gambar) }}" class="w-full h-auto rounded-2xl mt-6">
+        <img src="{{ asset('uploads/' . $artikel->gambar) }}" class="w-full h-auto rounded-2xl mt-6">
         @endif
         <div class="prose max-w-none mt-6 text-slate-700 leading-relaxed">
             {!! $artikel->konten !!}
@@ -46,7 +46,7 @@
             @foreach($related as $r)
             <a href="{{ route('artikels.show', $r->slug) }}" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md group">
                 <div class="h-40 bg-slate-100">
-                    @if($r->gambar)<img src="{{ asset('storage/' . $r->gambar) }}" class="w-full h-full object-cover group-hover:scale-105 transition">@endif
+                    @if($r->gambar)<img src="{{ asset('uploads/' . $r->gambar) }}" class="w-full h-full object-cover group-hover:scale-105 transition">@endif
                 </div>
                 <div class="p-4">
                     <h3 class="font-semibold text-slate-800 group-hover:text-sky-600 line-clamp-2">{{ $r->judul }}</h3>

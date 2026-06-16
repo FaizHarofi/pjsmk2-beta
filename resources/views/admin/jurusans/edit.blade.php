@@ -12,7 +12,7 @@
         <div><label class="block text-sm font-medium text-slate-700 mb-1">Deskripsi</label><textarea name="deskripsi" rows="4" class="w-full px-3 py-2 border border-slate-300 rounded-lg">{{ old('deskripsi', $jurusan->deskripsi) }}</textarea></div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Gambar</label>
-            @if($jurusan->gambar)<img src="{{ asset('storage/' . $jurusan->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
+            @if($jurusan->gambar)<img src="{{ asset('uploads/' . $jurusan->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
             <x-image-cropper name="gambar" folder="jurusans" label="Gambar" :current="$jurusan->gambar" aspect="4/3" :outputW="800" :outputH="600" />
         </div>
         <div class="grid grid-cols-3 gap-4">

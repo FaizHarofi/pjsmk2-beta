@@ -1,38 +1,145 @@
+# ==========================================
+# Logs
+# ==========================================
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-.DS_Store
-Thumbs.db
+storage/logs/*
+!storage/logs/.gitkeep
+
+# ==========================================
+# Environment
+# ==========================================
 .env
 .env.backup
 .env.production
-.phpactor.json
-.phpunit.result.cache
-/.codex
-/.cursor/
-/.idea
-/.nova
-/.fleet
-/.phpunit.cache
-/.vscode
-/.zed
-/.claude
-/aider*
-/auth.json
+.env.staging
+.envrc
+*.env.local
+
+# ==========================================
+# Dependencies
+# ==========================================
 /node_modules
+/vendor
+composer.phar
+
+# ==========================================
+# Laravel Framework (auto-generated)
+# ==========================================
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/framework/testing/*
+/storage/framework/debugbar/*
+/storage/framework/logs/*
+/storage/framework/app/cache
+!storage/framework/cache/.gitkeep
+!storage/framework/sessions/.gitkeep
+!storage/framework/views/.gitkeep
+
+/storage/logs/*
+!storage/logs/.gitkeep
+
+/storage/pail
+/storage/app/backups
+/storage/*.key
+
+# ==========================================
+# Public (compiled + symlink)
+# ==========================================
 /public/build
 /public/fonts-manifest.dev.json
 /public/hot
 /public/storage
-/storage/*.key
-/storage/pail
-/storage/app/backups
-/vendor
-composer.phar
+/public/uploads/         # served by Laravel route, files come from storage/app/public
+/.vite
+/vite.config.js.timestamp-*
+/mix-manifest.json
+
+# ==========================================
+# User uploads (TIDAK masuk git)
+# Path: storage/app/public/artikels/, sliders/, gurus/, dll
+# Folder structure tetap di-commit via .gitkeep
+# ==========================================
+/storage/app/public/artikels/*
+/storage/app/public/jurusans/*
+/storage/app/public/ketua-jurusans/*
+/storage/app/public/gurus/*
+/storage/app/public/galeris/*
+/storage/app/public/album-galeris/*
+/storage/app/public/prestasis/*
+/storage/app/public/pengumuman/*
+/storage/app/public/ekstrakurikuler/*
+/storage/app/public/fasilitas/*
+/storage/app/public/sliders/*
+/storage/app/public/link-terkait/*
+/storage/app/public/users/*
+/storage/app/public/sekolah/*
+/storage/app/public/test-uploads/*
+!storage/app/public/.gitkeep
+
+# ==========================================
+# IDE & Editors
+# ==========================================
+.idea/
+.cursor/
+.nova/
+.fleet/
+.vscode/
+.zed/
+.claude/
+/aider*
+.phpunit.cache/
+.phpunit.result.cache
+.phpactor.json
 _ide_helper.php
 Homestead.json
 Homestead.yaml
-.phpunit.cache/test-results/
+auth.json
+*.swp
+*.swo
+*~
+.vagrant/
+.codex/
+
+# ==========================================
+# OS Files
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# ==========================================
+# Misc
+# ==========================================
+*.local
+*.bak
+*.tmp
+*.swp
+*.orig
+*.rej
+.idea/
+*.iml
+.project
+.settings/
+.classpath
+nbproject/
+nb-configuration.xml
+build/
+dist/
+
+# ==========================================
+# Testing & Coverage
+# ==========================================
+/coverage
+/.phpunit.cache
+/.phpunit.cache/test-results/
+/.phpunit.result.cache
+test-reports/
+junit.xml

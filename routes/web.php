@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\Public\ArtikelController as PublicArtikelController;
 use App\Http\Controllers\Public\GaleriController as PublicGaleriController;
 use App\Http\Controllers\Public\GuruController as PublicGuruController;
@@ -10,6 +11,10 @@ use App\Http\Controllers\Public\PengumumanController as PublicPengumumanControll
 use App\Http\Controllers\Public\ProfilController;
 use App\Http\Controllers\Public\VideoController as PublicVideoController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/uploads/{path}', [AssetController::class, 'show'])
+    ->where('path', '.*')
+    ->name('uploads.show');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

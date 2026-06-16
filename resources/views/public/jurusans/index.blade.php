@@ -15,7 +15,7 @@
             @forelse($jurusans as $j)
             <a href="{{ route('jurusans.show', $j->slug) }}" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition">
                 <div class="h-48 bg-slate-100 relative">
-                    @if($j->gambar)<img src="{{ asset('storage/' . $j->gambar) }}" class="w-full h-full object-cover group-hover:scale-105 transition">@endif
+                    @if($j->gambar)<img src="{{ asset('uploads/' . $j->gambar) }}" class="w-full h-full object-cover group-hover:scale-105 transition">@endif
                     <div class="absolute top-3 left-3 px-3 py-1 rounded-lg text-white font-bold" style="background-color: {{ $j->warna ?? '#0284C7' }}">{{ $j->singkatan }}</div>
                 </div>
                 <div class="p-5">

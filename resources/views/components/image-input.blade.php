@@ -9,7 +9,7 @@
 
 @php
     $id = 'img-' . $name;
-    $currentUrl = $current ? asset('storage/' . $current) : null;
+    $currentUrl = $current ? asset('uploads/' . $current) : null;
 @endphp
 
 <div>

@@ -12,7 +12,7 @@
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
         <div class="h-40 bg-slate-100 relative">
             @if($album->cover)
-            <img src="{{ asset('storage/' . $album->cover) }}" class="w-full h-full object-cover">
+            <img src="{{ asset('uploads/' . $album->cover) }}" class="w-full h-full object-cover">
             @else
             <div class="w-full h-full flex items-center justify-center text-4xl text-slate-300">🖼️</div>
             @endif

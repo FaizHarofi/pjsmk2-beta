@@ -13,7 +13,7 @@
 
 @php
     $id = 'crop-' . md5($name . $folder);
-    $currentUrl = $current ? asset('storage/' . $current) : null;
+    $currentUrl = $current ? asset('uploads/' . $current) : null;
     $ratio = $outputH ? "{$outputW}/{$outputH}" : $aspect;
 @endphp
 
@@ -41,24 +41,35 @@
         </label>
     @endif
 
-    <div class="flex items-start gap-4">
-        <div class="shrink-0 w-24 h-24 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden relative">
+    <div class="flex items-center gap-3">
+        <div class="shrink-0 w-20 h-20 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden relative group">
             <img id="{{ $id }}-preview" src="{{ $currentUrl ?: '' }}" class="w-full h-full object-cover {{ $currentUrl ? '' : 'hidden' }}">
             <div id="{{ $id }}-placeholder" class="w-full h-full flex items-center justify-center text-slate-300 {{ $currentUrl ? 'hidden' : '' }}">
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>
             </div>
+            <button type="button" x-show="hasCurrent" @click="clearImage()" class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs font-semibold transition">
+                <span class="flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3"/></svg>
+                    Hapus
+                </span>
+            </button>
         </div>
-        <div class="flex-1 space-y-2">
+        <div class="flex-1 min-w-0">
             <input type="file" accept="image/*" @change="onChange" {{ $required ? 'required' : '' }}
-                class="block w-full text-sm text-slate-700 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-sky-50 file:text-sky-700 file:font-semibold hover:file:bg-sky-100 border border-slate-200 rounded-lg cursor-pointer">
+                class="block w-full text-sm text-slate-700 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:bg-sky-50 file:text-sky-700 file:font-semibold file:text-xs hover:file:bg-sky-100 border border-slate-200 rounded-md cursor-pointer">
             <input type="hidden" name="{{ $name }}" id="{{ $id }}-hidden" value="{{ $current }}">
 
-            <div x-show="info" class="text-xs flex items-center gap-2">
-                <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-semibold">WebP</span>
-                <span x-text="info" class="text-slate-600"></span>
+            <div class="flex items-center gap-2 mt-1.5 text-xs">
+                <template x-if="info">
+                    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 font-semibold">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        WebP
+                    </span>
+                </template>
+                <span x-show="info" x-text="info" class="text-slate-600"></span>
             </div>
 
-            <p class="text-xs text-slate-500">Akan di-resize ke <span class="font-mono font-semibold">{{ $outputW }}{{ $outputH ? '×'.$outputH : 'px max' }}</span> lalu convert ke WebP otomatis.</p>
+            <p class="text-[11px] text-slate-400 mt-1">Resize <span class="font-mono font-semibold text-slate-500">{{ $outputW }}{{ $outputH ? '×'.$outputH : 'px' }}</span> → WebP otomatis</p>
         </div>
     </div>
 
@@ -101,6 +112,21 @@ document.addEventListener('alpine:init', () => {
         info: '',
         file: null,
         id: cfg.id,
+        get hasCurrent() {
+            const h = document.getElementById(cfg.id + '-hidden');
+            return h && h.value;
+        },
+        clearImage() {
+            if (!confirm('Hapus gambar ini?')) return;
+            const preview = document.getElementById(cfg.id + '-preview');
+            const placeholder = document.getElementById(cfg.id + '-placeholder');
+            const hidden = document.getElementById(cfg.id + '-hidden');
+            preview.src = '';
+            preview.classList.add('hidden');
+            placeholder.classList.remove('hidden');
+            hidden.value = '';
+            this.info = '';
+        },
         async onChange(e) {
             const f = e.target.files[0];
             if (!f) return;

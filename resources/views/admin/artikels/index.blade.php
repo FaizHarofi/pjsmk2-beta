@@ -41,7 +41,7 @@
                     <td class="px-4 py-3">
                         <div class="flex items-center gap-3">
                             @if($artikel->gambar)
-                            <img src="{{ asset('storage/' . $artikel->gambar) }}" class="w-10 h-10 rounded object-cover">
+                            <img src="{{ asset('uploads/' . $artikel->gambar) }}" class="w-10 h-10 rounded object-cover">
                             @endif
                             <span class="font-medium text-slate-700">{{ Str::limit($artikel->judul, 50) }}</span>
                             @if($artikel->is_featured)<span class="px-1.5 py-0.5 text-xs bg-amber-100 text-amber-700 rounded">Featured</span>@endif

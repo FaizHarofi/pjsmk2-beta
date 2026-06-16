@@ -15,7 +15,7 @@
             @forelse($gurus as $guru)
             <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 text-center">
                 <div class="aspect-square bg-slate-100">
-                    @if($guru->foto)<img src="{{ asset('storage/' . $guru->foto) }}" class="w-full h-full object-cover">@else<div class="w-full h-full flex items-center justify-center text-4xl text-slate-300">👤</div>@endif
+                    @if($guru->foto)<img src="{{ asset('uploads/' . $guru->foto) }}" class="w-full h-full object-cover">@else<div class="w-full h-full flex items-center justify-center text-4xl text-slate-300">👤</div>@endif
                 </div>
                 <div class="p-4">
                     <h3 class="font-bold text-slate-800">{{ $guru->nama }}</h3>

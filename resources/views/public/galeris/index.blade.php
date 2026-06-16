@@ -15,7 +15,7 @@
             @forelse($albums as $album)
             <a href="{{ route('galeris.show', $album->slug) }}" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition">
                 <div class="aspect-video bg-slate-100">
-                    @if($album->cover)<img src="{{ asset('storage/' . $album->cover) }}" class="w-full h-full object-cover group-hover:scale-105 transition">@endif
+                    @if($album->cover)<img src="{{ asset('uploads/' . $album->cover) }}" class="w-full h-full object-cover group-hover:scale-105 transition">@endif
                 </div>
                 <div class="p-4">
                     <h3 class="font-bold text-slate-800 group-hover:text-sky-600">{{ $album->judul }}</h3>

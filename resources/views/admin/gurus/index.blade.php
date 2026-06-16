@@ -23,7 +23,7 @@
             @forelse($gurus as $guru)
             <tr>
                 <td class="px-4 py-3">
-                    @if($guru->foto)<img src="{{ asset('storage/' . $guru->foto) }}" class="w-10 h-12 rounded object-cover">@else<div class="w-10 h-12 bg-slate-200 rounded"></div>@endif
+                    @if($guru->foto)<img src="{{ asset('uploads/' . $guru->foto) }}" class="w-10 h-12 rounded object-cover">@else<div class="w-10 h-12 bg-slate-200 rounded"></div>@endif
                 </td>
                 <td class="px-4 py-3 font-medium text-slate-700">{{ $guru->nama }}</td>
                 <td class="px-4 py-3 text-slate-500">{{ $guru->jabatan ?? '-' }}</td>

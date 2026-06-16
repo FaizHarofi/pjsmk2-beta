@@ -13,7 +13,7 @@
         </div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Gambar</label>
-            @if($fasilitas->gambar)<img src="{{ asset('storage/' . $fasilitas->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
+            @if($fasilitas->gambar)<img src="{{ asset('uploads/' . $fasilitas->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
             <x-image-cropper name="gambar" folder="fasilitas" label="Gambar" :current="$fasilitas->gambar" aspect="3/2" :outputW="1200" :outputH="800" />
         </div>
         <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="is_active" value="1" {{ old('is_active', $fasilitas->is_active) ? 'checked' : '' }} class="rounded border-slate-300"> Aktif</label>

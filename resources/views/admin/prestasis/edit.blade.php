@@ -31,7 +31,7 @@
         </div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Gambar</label>
-            @if($prestasi->gambar)<img src="{{ asset('storage/' . $prestasi->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
+            @if($prestasi->gambar)<img src="{{ asset('uploads/' . $prestasi->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
             <x-image-cropper name="gambar" folder="prestasis" label="Gambar" :current="$prestasi->gambar" aspect="4/3" :outputW="800" :outputH="600" />
         </div>
         <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="is_published" value="1" {{ old('is_published', $prestasi->is_published) ? 'checked' : '' }} class="rounded border-slate-300"> Published</label>

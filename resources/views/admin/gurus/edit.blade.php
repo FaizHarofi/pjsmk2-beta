@@ -28,7 +28,7 @@
         </div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Foto</label>
-            @if($guru->foto)<img src="{{ asset('storage/' . $guru->foto) }}" class="w-20 h-24 rounded object-cover mb-2">@endif
+            @if($guru->foto)<img src="{{ asset('uploads/' . $guru->foto) }}" class="w-20 h-24 rounded object-cover mb-2">@endif
             <x-image-cropper name="foto" folder="gurus" label="Gambar" :current="$guru->foto" aspect="4/5" :outputW="400" :outputH="500" />
         </div>
         <div class="grid grid-cols-2 gap-4">

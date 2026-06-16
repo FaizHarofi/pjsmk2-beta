@@ -9,7 +9,7 @@
         <div><label class="block text-sm font-medium text-slate-700 mb-1">Konten *</label><textarea name="konten" rows="6" required class="w-full px-3 py-2 border border-slate-300 rounded-lg">{{ old('konten', $pengumuman->konten) }}</textarea></div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Gambar</label>
-            @if($pengumuman->gambar)<img src="{{ asset('storage/' . $pengumuman->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
+            @if($pengumuman->gambar)<img src="{{ asset('uploads/' . $pengumuman->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
             <x-image-cropper name="gambar" folder="pengumuman" label="Gambar" :current="$pengumuman->gambar" aspect="16/9" :outputW="1200" :outputH="630" />
         </div>
         <div><label class="block text-sm font-medium text-slate-700 mb-1">Expired</label><input type="date" name="expired_at" value="{{ old('expired_at', $pengumuman->expired_at?->format('Y-m-d')) }}" class="w-full px-3 py-2 border border-slate-300 rounded-lg"></div>

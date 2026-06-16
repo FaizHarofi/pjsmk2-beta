@@ -48,7 +48,7 @@ trait HasImageUpload
         string $mainVariant = 'large'
     ): string {
         $manager = new ImageManager(new Driver());
-        $image = $manager->read($file->getRealPath());
+        $image = $manager->decode($file->getRealPath());
 
         if (is_array($width)) {
             return $this->processVariants($image, $folder, $width, $mainVariant);
@@ -86,7 +86,7 @@ trait HasImageUpload
     ): string {
         $manager = new ImageManager(new Driver());
         return $this->processVariants(
-            $manager->read($file->getRealPath()),
+            $manager->decode($file->getRealPath()),
             $folder,
             $variants ?? self::$imageVariants,
             $mainVariant
@@ -179,7 +179,7 @@ trait HasImageUpload
         $fullPath = $disk->path($existingPath);
         if (!file_exists($fullPath)) return $existingPath;
 
-        $image = $manager->read($fullPath);
+        $image = $manager->decode($fullPath);
 
         if ($fit === 'cover' && $width && $height) {
             $image->cover($width, $height);

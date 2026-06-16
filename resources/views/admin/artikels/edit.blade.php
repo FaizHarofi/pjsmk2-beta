@@ -29,14 +29,11 @@
             <label class="block text-sm font-medium text-slate-700 mb-1">Ringkasan</label>
             <textarea name="ringkasan" rows="2" class="w-full px-3 py-2 border border-slate-300 rounded-lg">{{ old('ringkasan', $artikel->ringkasan) }}</textarea>
         </div>
-        <div>
-            <label class="block text-sm font-medium text-slate-700 mb-1">Konten *</label>
-            <textarea name="konten" rows="8" required class="w-full px-3 py-2 border border-slate-300 rounded-lg">{{ old('konten', $artikel->konten) }}</textarea>
-        </div>
+        <x-rich-text name="konten" :value="old('konten', $artikel->konten)" />
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Gambar</label>
             @if($artikel->gambar)
-            <img src="{{ asset('storage/' . $artikel->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">
+            <img src="{{ asset('uploads/' . $artikel->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">
             @endif
             <x-image-cropper name="gambar" folder="artikels" label="Gambar" :current="$artikel->gambar" aspect="16/9" :outputW="1200" :outputH="630" />
         </div>

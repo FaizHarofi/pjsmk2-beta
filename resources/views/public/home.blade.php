@@ -22,7 +22,7 @@
 <section x-data="{ current: 0, count: {{ $sliders->count() }} }" x-init="setInterval(() => current = (current + 1) % count, 5000)" class="relative h-[600px] overflow-hidden">
     @foreach($sliders as $i => $slider)
     <div x-show="current === {{ $i }}" x-transition.opacity class="absolute inset-0">
-        <img src="{{ asset('storage/' . $slider->gambar) }}" class="w-full h-full object-cover">
+        <img src="{{ asset('uploads/' . $slider->gambar) }}" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
         <div class="absolute inset-0 flex items-center justify-center text-center">
             <div class="container mx-auto px-4 text-white max-w-3xl">
@@ -56,7 +56,7 @@
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
                 @if($sekolah->foto_kepsek)
-                <img src="{{ asset('storage/' . $sekolah->foto_kepsek) }}" class="w-64 h-80 object-cover rounded-2xl border-4 border-primary shadow-xl mx-auto">
+                <img src="{{ asset('uploads/' . $sekolah->foto_kepsek) }}" class="w-64 h-80 object-cover rounded-2xl border-4 border-primary shadow-xl mx-auto">
                 @endif
             </div>
             <div>
@@ -109,7 +109,7 @@
             <a href="{{ route('artikels.show', $artikel->slug) }}" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-slate-100">
                 <div class="h-48 bg-slate-100 overflow-hidden">
                     @if($artikel->gambar)
-                    <img src="{{ asset('storage/' . $artikel->gambar) }}" class="w-full h-full object-cover group-hover:scale-105 transition">
+                    <img src="{{ asset('uploads/' . $artikel->gambar) }}" class="w-full h-full object-cover group-hover:scale-105 transition">
                     @endif
                 </div>
                 <div class="p-5">
@@ -169,7 +169,7 @@
             @php $colors = ['sekolah' => 'bg-slate-100 text-slate-700', 'kota' => 'bg-blue-100 text-blue-700', 'provinsi' => 'bg-yellow-100 text-yellow-700', 'nasional' => 'bg-orange-100 text-orange-700', 'internasional' => 'bg-green-100 text-green-700']; @endphp
             <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
                 <div class="h-44 bg-slate-100">
-                    @if($p->gambar)<img src="{{ asset('storage/' . $p->gambar) }}" class="w-full h-full object-cover">@endif
+                    @if($p->gambar)<img src="{{ asset('uploads/' . $p->gambar) }}" class="w-full h-full object-cover">@endif
                 </div>
                 <div class="p-5">
                     <span class="px-2 py-1 text-xs rounded {{ $colors[$p->tingkat] ?? 'bg-slate-100 text-slate-700' }}">{{ ucfirst($p->tingkat) }}</span>
@@ -197,9 +197,9 @@
             @foreach($albums->take(4) as $album)
             <a href="{{ route('galeris.show', $album->slug) }}" class="relative aspect-square rounded-2xl overflow-hidden group">
                 @if($album->cover)
-                <img src="{{ asset('storage/' . $album->cover) }}" class="w-full h-full object-cover group-hover:scale-110 transition">
+                <img src="{{ asset('uploads/' . $album->cover) }}" class="w-full h-full object-cover group-hover:scale-110 transition">
                 @elseif($album->fotos->first())
-                <img src="{{ asset('storage/' . $album->fotos->first()->file_path) }}" class="w-full h-full object-cover group-hover:scale-110 transition">
+                <img src="{{ asset('uploads/' . $album->fotos->first()->file_path) }}" class="w-full h-full object-cover group-hover:scale-110 transition">
                 @endif
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
                     <span class="text-white text-sm font-semibold">{{ $album->judul }}</span>

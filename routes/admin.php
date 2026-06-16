@@ -64,6 +64,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::delete('kontak/{kontak}', [KontakController::class, 'destroy'])->name('kontak.destroy');
 
     Route::post('upload/image', [UploadController::class, 'image'])->name('upload.image');
+    Route::get('upload/list', [UploadController::class, 'list'])->name('upload.list');
+    Route::post('upload/delete', [UploadController::class, 'delete'])->name('upload.delete');
 
     Route::resource('users', UserController::class)->middleware('role:superadmin');
 });

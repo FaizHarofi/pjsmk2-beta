@@ -23,7 +23,7 @@
         <div><label class="block text-sm font-medium text-slate-700 mb-1">Nama</label><input type="text" name="nama_kepsek" value="{{ old('nama_kepsek', $sekolah->nama_kepsek) }}" class="w-full px-3 py-2 border border-slate-300 rounded-lg"></div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Foto</label>
-            @if($sekolah->foto_kepsek)<img src="{{ asset('storage/' . $sekolah->foto_kepsek) }}" class="w-20 h-24 rounded object-cover mb-2">@endif
+            @if($sekolah->foto_kepsek)<img src="{{ asset('uploads/' . $sekolah->foto_kepsek) }}" class="w-20 h-24 rounded object-cover mb-2">@endif
             <x-image-cropper name="foto_kepsek" folder="sekolah/kepsek" label="Foto Kepala Sekolah" :current="$sekolah->foto_kepsek" aspect="4/5" :outputW="400" :outputH="500" />
         </div>
     </div>
@@ -44,17 +44,17 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Logo</label>
-            @if($sekolah->logo)<img src="{{ asset('storage/' . $sekolah->logo) }}" class="w-20 h-20 rounded mb-2">@endif
+            @if($sekolah->logo)<img src="{{ asset('uploads/' . $sekolah->logo) }}" class="w-20 h-20 rounded mb-2">@endif
             <x-image-cropper name="logo" folder="sekolah/logo" label="Logo Sekolah" :current="$sekolah->logo" aspect="1/1" :outputW="200" :outputH="200" />
         </div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Favicon</label>
-            @if($sekolah->favicon)<img src="{{ asset('storage/' . $sekolah->favicon) }}" class="w-12 h-12 rounded mb-2">@endif
+            @if($sekolah->favicon)<img src="{{ asset('uploads/' . $sekolah->favicon) }}" class="w-12 h-12 rounded mb-2">@endif
             <x-image-cropper name="favicon" folder="sekolah/favicon" label="Favicon" :current="$sekolah->favicon" aspect="1/1" :outputW="64" :outputH="64" />
         </div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Hero Image</label>
-            @if($sekolah->hero_image)<img src="{{ asset('storage/' . $sekolah->hero_image) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
+            @if($sekolah->hero_image)<img src="{{ asset('uploads/' . $sekolah->hero_image) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
             <x-image-cropper name="hero_image" folder="sekolah/hero" label="Hero Image" :current="$sekolah->hero_image" aspect="12/5" :outputW="1920" :outputH="800" />
         </div>
     </div>

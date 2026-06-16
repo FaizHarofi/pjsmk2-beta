@@ -9,7 +9,7 @@
         <div><label class="block text-sm font-medium text-slate-700 mb-1">Sub Judul</label><input type="text" name="sub_judul" value="{{ old('sub_judul', $slider->sub_judul) }}" class="w-full px-3 py-2 border border-slate-300 rounded-lg"></div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Gambar</label>
-            @if($slider->gambar)<img src="{{ asset('storage/' . $slider->gambar) }}" class="w-full h-40 rounded object-cover mb-2">@endif
+            @if($slider->gambar)<img src="{{ asset('uploads/' . $slider->gambar) }}" class="w-full h-40 rounded object-cover mb-2">@endif
             <x-image-cropper name="gambar" folder="sliders" label="Gambar" :current="$slider->gambar" aspect="12/5" :outputW="1920" :outputH="800" />
         </div>
         <div class="grid grid-cols-2 gap-4">

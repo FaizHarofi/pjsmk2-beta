@@ -28,7 +28,7 @@
                 <a href="{{ route('artikels.show', $artikel->slug) }}" class="block bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition group">
                     <div class="md:flex">
                         <div class="md:w-1/3 h-48 md:h-auto bg-slate-100">
-                            @if($artikel->gambar)<img src="{{ asset('storage/' . $artikel->gambar) }}" class="w-full h-full object-cover group-hover:scale-105 transition">@endif
+                            @if($artikel->gambar)<img src="{{ asset('uploads/' . $artikel->gambar) }}" class="w-full h-full object-cover group-hover:scale-105 transition">@endif
                         </div>
                         <div class="p-5 md:w-2/3">
                             @if($artikel->kategori)

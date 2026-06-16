@@ -20,7 +20,7 @@
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     @forelse($galeri->fotos as $foto)
     <div class="relative group">
-        <img src="{{ asset('storage/' . $foto->file_path) }}" class="w-full h-40 object-cover rounded">
+        <img src="{{ asset('uploads/' . $foto->file_path) }}" class="w-full h-40 object-cover rounded">
         <form method="POST" action="{{ route('admin.galeris.delete-foto', $foto) }}" onsubmit="return confirm('Hapus foto ini?')" class="absolute top-2 right-2">
             @csrf @method('DELETE')
             <button type="submit" class="px-2 py-1 bg-red-600 text-white text-xs rounded opacity-0 group-hover:opacity-100">Hapus</button>

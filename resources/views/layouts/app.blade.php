@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', '') — {{ sekolah()->nama ?? 'SMKN 2 Pekanbaru' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/png" href="{{ (sekolah() && sekolah()->favicon) ? asset('storage/' . sekolah()->favicon) : asset('assets/img/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ (sekolah() && sekolah()->favicon) ? asset('uploads/' . sekolah()->favicon) : asset('assets/img/favicon.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <meta name="description" content="@yield('description', sekolah()->nama ?? 'Website Resmi')">
     <meta property="og:title" content="@yield('title', '') — {{ sekolah()->nama ?? '' }}">
     <meta property="og:description" content="@yield('description', '')">
-    <meta property="og:image" content="@yield('image', (sekolah() && sekolah()->logo) ? asset('storage/' . sekolah()->logo) : '')">
+    <meta property="og:image" content="@yield('image', (sekolah() && sekolah()->logo) ? asset('uploads/' . sekolah()->logo) : '')">
     <meta property="og:type" content="website">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -42,7 +42,7 @@
         <div class="flex items-center justify-between h-16">
             <a href="{{ route('home') }}" class="flex items-center gap-3">
                 @if(sekolah() && sekolah()->logo)
-                <img src="{{ asset('storage/' . sekolah()->logo) }}" class="h-10 w-10 object-contain" alt="Logo">
+                <img src="{{ asset('uploads/' . sekolah()->logo) }}" class="h-10 w-10 object-contain" alt="Logo">
                 <div class="font-bold text-primary leading-tight">{{ sekolah()->nama ?? 'SMKN 2 Pekanbaru' }}</div>
                 @else
                 <img src="{{ asset('assets/img/logo.png') }}" class="h-10 w-10 object-contain" alt="Logo">

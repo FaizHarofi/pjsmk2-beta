@@ -25,7 +25,7 @@
         </div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Foto</label>
-            @if($ketuaJurusan->foto)<img src="{{ asset('storage/' . $ketuaJurusan->foto) }}" class="w-20 h-24 rounded object-cover mb-2">@endif
+            @if($ketuaJurusan->foto)<img src="{{ asset('uploads/' . $ketuaJurusan->foto) }}" class="w-20 h-24 rounded object-cover mb-2">@endif
             <x-image-cropper name="foto" folder="ketua-jurusans" label="Gambar" :current="$ketuaJurusan->foto" aspect="4/5" :outputW="400" :outputH="500" />
         </div>
         <div><label class="block text-sm font-medium text-slate-700 mb-1">Sambutan</label><textarea name="sambutan" rows="5" class="w-full px-3 py-2 border border-slate-300 rounded-lg">{{ old('sambutan', $ketuaJurusan->sambutan) }}</textarea></div>

@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="relative h-80 bg-primary overflow-hidden">
-    @if($jurusan->gambar)<img src="{{ asset('storage/' . $jurusan->gambar) }}" class="w-full h-full object-cover opacity-40">@endif
+    @if($jurusan->gambar)<img src="{{ asset('uploads/' . $jurusan->gambar) }}" class="w-full h-full object-cover opacity-40">@endif
     <div class="absolute inset-0 flex items-center justify-center text-center text-white">
         <div>
             <div class="inline-block px-4 py-1 rounded-lg font-bold mb-2" style="background-color: {{ $jurusan->warna ?? '#0284C7' }}">{{ $jurusan->singkatan }}</div>
@@ -26,7 +26,7 @@
                     <h3 class="font-bold text-slate-800 mb-3">Ketua Jurusan</h3>
                     <div class="flex items-center gap-3">
                         @if($jurusan->ketuaJurusan->foto)
-                        <img src="{{ asset('storage/' . $jurusan->ketuaJurusan->foto) }}" class="w-14 h-14 rounded-full object-cover">
+                        <img src="{{ asset('uploads/' . $jurusan->ketuaJurusan->foto) }}" class="w-14 h-14 rounded-full object-cover">
                         @endif
                         <div>
                             <p class="font-semibold text-slate-800">{{ $jurusan->ketuaJurusan->nama }}</p>

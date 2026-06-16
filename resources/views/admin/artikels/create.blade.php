@@ -29,10 +29,7 @@
             <label class="block text-sm font-medium text-slate-700 mb-1">Ringkasan</label>
             <textarea name="ringkasan" rows="2" class="w-full px-3 py-2 border border-slate-300 rounded-lg">{{ old('ringkasan') }}</textarea>
         </div>
-        <div>
-            <label class="block text-sm font-medium text-slate-700 mb-1">Konten *</label>
-            <textarea name="konten" rows="8" required class="w-full px-3 py-2 border border-slate-300 rounded-lg">{{ old('konten') }}</textarea>
-        </div>
+        <x-rich-text name="konten" :value="old('konten')" />
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Gambar</label>
             <x-image-cropper name="gambar" folder="artikels" label="Gambar" aspect="16/9" :outputW="1200" :outputH="630" />

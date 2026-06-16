@@ -16,8 +16,8 @@
         <p class="text-slate-500 mb-6">{{ $galeri->deskripsi }}</p>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" x-data="{ open: false, src: '' }">
             @foreach($galeri->fotos as $foto)
-            <button @click="src = '{{ asset('storage/' . $foto->file_path) }}'; open = true" class="aspect-square overflow-hidden rounded-2xl">
-                <img src="{{ asset('storage/' . $foto->file_path) }}" class="w-full h-full object-cover hover:scale-110 transition">
+            <button @click="src = '{{ asset('uploads/' . $foto->file_path) }}'; open = true" class="aspect-square overflow-hidden rounded-2xl">
+                <img src="{{ asset('uploads/' . $foto->file_path) }}" class="w-full h-full object-cover hover:scale-110 transition">
             </button>
             @endforeach
             <div x-show="open" @click="open = false" class="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" x-transition>

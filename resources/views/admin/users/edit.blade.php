@@ -16,7 +16,7 @@
         </div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Avatar</label>
-            @if($user->avatar)<img src="{{ asset('storage/' . $user->avatar) }}" class="w-16 h-16 rounded-full mb-2">@endif
+            @if($user->avatar)<img src="{{ asset('uploads/' . $user->avatar) }}" class="w-16 h-16 rounded-full mb-2">@endif
             <input type="file" name="avatar" accept="image/*" class="w-full px-3 py-2 border border-slate-300 rounded-lg">
         </div>
         <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="is_active" value="1" {{ old('is_active', $user->is_active) ? 'checked' : '' }} class="rounded border-slate-300"> Aktif</label>

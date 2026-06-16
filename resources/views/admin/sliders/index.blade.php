@@ -10,7 +10,7 @@
     <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
         <div class="h-40 bg-slate-100 relative">
             @if($slider->gambar)
-            <img src="{{ asset('storage/' . $slider->gambar) }}" class="w-full h-full object-cover">
+            <img src="{{ asset('uploads/' . $slider->gambar) }}" class="w-full h-full object-cover">
             @endif
             <span class="absolute top-2 right-2 px-2 py-1 text-xs rounded {{ $slider->is_active ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700' }}">{{ $slider->is_active ? 'Aktif' : 'Nonaktif' }}</span>
         </div>

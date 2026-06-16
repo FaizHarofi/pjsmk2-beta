@@ -18,7 +18,7 @@
         </div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Gambar</label>
-            @if($ekstrakurikuler->gambar)<img src="{{ asset('storage/' . $ekstrakurikuler->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
+            @if($ekstrakurikuler->gambar)<img src="{{ asset('uploads/' . $ekstrakurikuler->gambar) }}" class="w-32 h-20 rounded object-cover mb-2">@endif
             <x-image-cropper name="gambar" folder="ekstrakurikuler" label="Gambar" :current="$ekstrakurikuler->gambar" aspect="4/3" :outputW="800" :outputH="600" />
         </div>
         <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="is_active" value="1" {{ old('is_active', $ekstrakurikuler->is_active) ? 'checked' : '' }} class="rounded border-slate-300"> Aktif</label>

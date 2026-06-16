@@ -7,8 +7,16 @@
     <title>@yield('title', 'Admin') — {{ config('app.name') }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/admin.js'])
+        @vite(['resources/css/app.css', 'resources/js/admin.js'])
     @stack('head')
+    <style>
+        [x-cloak] { display: none !important; }
+        .sidebar-nav { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
+        .sidebar-nav::-webkit-scrollbar { width: 6px; }
+        .sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+        .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+        .sidebar-nav::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.35); }
+    </style>
 </head>
 <body class="bg-slate-100 font-sans">
     <div x-data="{ sidebarOpen: false }" class="flex h-screen overflow-hidden">
@@ -16,12 +24,12 @@
         <div x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 z-20 bg-black/50 lg:hidden"></div>
 
         {{-- Sidebar --}}
-        <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" class="fixed inset-y-0 left-0 z-30 w-64 bg-primary text-white transform transition-transform duration-300 lg:translate-x-0 lg:static lg:inset-auto">
-            <div class="flex items-center justify-between h-16 px-6 border-b border-white/10">
+        <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" class="fixed inset-y-0 left-0 z-30 w-64 bg-primary text-white transform transition-transform duration-300 flex flex-col lg:translate-x-0 lg:static lg:inset-auto">
+            <div class="shrink-0 flex items-center justify-between h-16 px-6 border-b border-white/10">
                 <a href="{{ route('admin.dashboard') }}" class="text-lg font-bold">SMKN 2 Admin</a>
                 <button @click="sidebarOpen = false" class="lg:hidden text-white/70 hover:text-white">&times;</button>
             </div>
-            <nav class="p-4 space-y-1 overflow-y-auto h-[calc(100vh-4rem)]">
+            <nav class="flex-1 p-4 space-y-1 overflow-y-auto sidebar-nav">
                 <x-admin.sidebar-link :href="route('admin.dashboard')" icon="home">Dashboard</x-admin.sidebar-link>
                 <div class="pt-4 pb-2 text-xs uppercase tracking-wider text-white/40">Konten</div>
                 <x-admin.sidebar-link :href="route('admin.artikels.index')" icon="newspaper">Artikel</x-admin.sidebar-link>

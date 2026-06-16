@@ -9,7 +9,7 @@
         <div><label class="block text-sm font-medium text-slate-700 mb-1">URL *</label><input type="url" name="url" value="{{ old('url', $linkTerkait->url) }}" required class="w-full px-3 py-2 border border-slate-300 rounded-lg"></div>
         <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Logo</label>
-            @if($linkTerkait->logo)<img src="{{ asset('storage/' . $linkTerkait->logo) }}" class="w-20 h-20 rounded mb-2">@endif
+            @if($linkTerkait->logo)<img src="{{ asset('uploads/' . $linkTerkait->logo) }}" class="w-20 h-20 rounded mb-2">@endif
             <x-image-cropper name="logo" folder="links" label="Gambar" :current="$linkTerkait->logo" aspect="1/1" :outputW="300" :outputH="300" />
         </div>
         <div><label class="block text-sm font-medium text-slate-700 mb-1">Urutan</label><input type="number" name="urutan" value="{{ old('urutan', $linkTerkait->urutan) }}" class="w-full px-3 py-2 border border-slate-300 rounded-lg"></div>
